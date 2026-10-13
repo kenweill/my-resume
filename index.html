@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Affiliate Marketing Manager with 10+ years of experience building and scaling profitable affiliate programs for e-commerce and digital brands. Hands-on WordPress/PHP development, AWIN, CJ, Impact, affiliate recruitment, campaign optimization, and lead generation.">
+<title>Ken Weill Lumacad</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --dark:        #0A1929;
+  --dark2:       #0F2440;
+  --accent:      #0D9488;
+  --accent2:     #14B8A6;
+  --accent-gold: #EAB308;
+  --page-bg:     #E8EEF4;
+  --text:        #1E2D3D;
+  --muted:       #64748B;
+  --font-display: 'Roboto Slab', serif;
+  --font-body:    'Roboto', sans-serif;
+}
+
+html { font-size: 15px; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--page-bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px 60px;
+  margin: 0;
+}
+
+/* Print button */
+.kwl-print-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 1.3rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.22);
+  z-index: 999;
+  transition: background 0.2s, transform 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.kwl-print-btn:hover { background: var(--accent2); transform: scale(1.08); }
+
+/* Page wrapper */
+.kwl-page {
+  width: 100%;
+  max-width: 960px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  background: #fff;
+  box-shadow: 0 20px 80px rgba(0,0,0,0.18);
+  border-radius: 2px;
+  overflow: hidden;
+  animation: kwlFadeUp 0.7s ease both;
+}
+
+@keyframes kwlFadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Sidebar */
+.kwl-sidebar {
+  background: var(--dark);
+  color: #C8D8E8;
+  padding: 48px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.kwl-sidebar-header { text-align: center; }
+
+.kwl-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--dark2);
+  border: 3px solid var(--accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 1px;
+  overflow: hidden;
+}
+.kwl-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.kwl-sidebar-name {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #E8F0F8;
+  line-height: 1.2;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.kwl-sidebar-title {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  line-height: 1.5;
+}
+
+.kwl-s-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(13,152,136,0.4), transparent);
+  opacity: 0.6;
+  margin: -8px 0;
+}
+
+.kwl-s-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.kwl-s-block { display: flex; flex-direction: column; gap: 0; }
+
+/* Contact */
+.kwl-contact-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.kwl-contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.78rem;
+  color: #A8BCD0;
+  line-height: 1.4;
+}
+.kwl-contact-list li em { font-style: normal; color: #888; }
+.kwl-ico {
+  width: 18px;
+  flex-shrink: 0;
+  color: var(--accent);
+  font-size: 0.85rem;
+  margin-top: 1px;
+}
+.kwl-contact-list a { color: #A8BCD0; text-decoration: none; word-break: break-all; }
+.kwl-contact-list a:hover { color: var(--accent2); }
+
+/* Skills */
+.kwl-skills-cloud { display: flex; flex-wrap: wrap; gap: 7px; }
+.kwl-skill-tag {
+  background: var(--dark2);
+  border: 1px solid rgba(13,152,136,0.25);
+  color: #B8CDD8;
+  font-size: 0.7rem;
+  font-weight: 400;
+  padding: 4px 10px;
+  border-radius: 2px;
+  line-height: 1.4;
+  transition: border-color 0.2s, color 0.2s;
+}
+.kwl-skill-tag:hover { border-color: var(--accent); color: var(--accent2); }
+
+/* Education */
+.kwl-edu-block { font-size: 0.78rem; color: #99AEC2; line-height: 1.6; margin-bottom: 14px; }
+.kwl-edu-block:last-child { margin-bottom: 0; }
+.kwl-edu-block strong { display: block; color: #D8E8F0; font-size: 0.85rem; margin-bottom: 2px; }
+.kwl-edu-degree { color: #DDE4ED; margin-bottom: 2px; }
+
+/* Certifications */
+.kwl-cert-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.kwl-cert-list li { font-size: 0.75rem; color: #99AEC2; line-height: 1.5; }
+.kwl-cert-list li strong { display: block; color: #C8D8E8; font-weight: 600; margin-bottom: 1px; }
+.kwl-cert-list li em { font-style: normal; color: var(--accent); font-size: 0.68rem; }
+
+/* Main content */
+.kwl-main {
+  padding: 48px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  background: #fff;
+}
+
+.kwl-main-name {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+}
+.kwl-main-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 8px;
+}
+
+.kwl-section { display: flex; flex-direction: column; }
+
+.kwl-section-label {
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.kwl-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, #C2D9ED, transparent);
+}
+
+.kwl-summary-text {
+  font-size: 0.88rem;
+  color: #334155;
+  line-height: 1.8;
+  border-left: 3px solid var(--accent);
+  padding-left: 18px;
+}
+
+/* Experience */
+.kwl-exp-item { margin-bottom: 26px; }
+.kwl-exp-item:last-child { margin-bottom: 0; }
+
+.kwl-exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 2px;
+}
+.kwl-exp-role {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--dark);
+  line-height: 1.3;
+}
+.kwl-exp-date {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: #64748B;
+  white-space: nowrap;
+  padding-top: 3px;
+  text-align: right;
+}
+.kwl-exp-company {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.kwl-exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.kwl-exp-bullets li {
+  font-size: 0.8rem;
+  color: #4A5568;
+  line-height: 1.65;
+  padding-left: 16px;
+  position: relative;
+}
+.kwl-exp-bullets li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.75rem;
+}
+
+/* Projects */
+.kwl-proj-list { display: flex; flex-direction: column; gap: 16px; }
+.kwl-proj-item {
+  border: 1px solid #D0DCE8;
+  border-radius: 2px;
+  padding: 14px 18px;
+  background: #F0F5FA;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.kwl-proj-item:hover {
+  border-color: var(--accent);
+  box-shadow: 0 2px 16px rgba(13,152,136,0.18);
+}
+.kwl-proj-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.kwl-proj-header strong {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+.kwl-proj-type {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(13,152,136,0.1);
+  padding: 2px 7px;
+  border-radius: 20px;
+}
+.kwl-proj-item p {
+  font-size: 0.78rem;
+  color: #5A6270;
+  line-height: 1.6;
+}
+.kwl-proj-link { margin-top: 8px; }
+.kwl-proj-link a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+.kwl-proj-link a:hover { color: var(--accent2); text-decoration: underline; }
+
+/* Footer */
+.kwl-resume-footer {
+  margin-top: 20px;
+  padding-top: 30px;
+  border-top: 1px solid #E2E8F0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.kwl-footer-name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+.kwl-footer-title {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.kwl-footer-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--dark);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 8px 20px;
+  border-radius: 30px;
+  transition: background 0.2s, transform 0.15s;
+}
+.kwl-footer-linkedin:hover { background: var(--accent); transform: translateY(-2px); }
+.kwl-footer-open { font-size: 0.7rem; color: #64748B; }
+.kwl-footer-date { font-size: 0.65rem; color: #94A3B8; }
+
+/* Print */
+@media print {
+  body { padding: 0; background: #fff; }
+  .kwl-page { box-shadow: none; max-width: 100%; animation: none; }
+  .kwl-print-btn { display: none; }
+  .kwl-skill-tag:hover, .kwl-proj-item:hover { border-color: initial; box-shadow: none; }
+  .kwl-proj-link a { color: #000; text-decoration: underline; }
+  .kwl-footer-linkedin { background: var(--dark); print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .kwl-sidebar { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+}
+
+/* Tablet */
+@media (max-width: 860px) and (min-width: 681px) {
+  .kwl-page { max-width: 100%; }
+  .kwl-main { padding: 36px 28px; }
+  .kwl-main-name { font-size: 2.2rem; }
+}
+
+/* Mobile */
+@media (max-width: 680px) {
+  body { padding: 0; }
+  .kwl-page { grid-template-columns: 1fr; border-radius: 0; box-shadow: none; }
+  .kwl-sidebar { padding: 32px 20px; gap: 28px; }
+  .kwl-avatar { width: 84px; height: 84px; font-size: 1.8rem; }
+  .kwl-sidebar-name { font-size: 1.25rem; }
+  .kwl-skills-cloud { gap: 6px; }
+  .kwl-skill-tag { font-size: 0.68rem; padding: 3px 9px; }
+  .kwl-cert-list li { font-size: 0.72rem; }
+  .kwl-main { padding: 28px 20px; gap: 28px; }
+  .kwl-main-name { font-size: 1.9rem; letter-spacing: -0.3px; }
+  .kwl-main-title { font-size: 0.68rem; }
+  .kwl-summary-text { font-size: 0.84rem; padding-left: 14px; }
+  .kwl-section-label { font-size: 0.82rem; margin-bottom: 14px; }
+  .kwl-exp-item { margin-bottom: 22px; }
+  .kwl-exp-header { flex-direction: column; gap: 2px; }
+  .kwl-exp-role { font-size: 0.95rem; }
+  .kwl-exp-date { text-align: left; white-space: normal; font-size: 0.66rem; }
+  .kwl-exp-company { font-size: 0.74rem; margin-bottom: 8px; }
+  .kwl-exp-bullets li { font-size: 0.78rem; }
+  .kwl-proj-item { padding: 12px 14px; }
+  .kwl-proj-header { flex-wrap: wrap; }
+  .kwl-proj-item p { font-size: 0.76rem; }
+  .kwl-resume-footer { padding-top: 22px; gap: 10px; }
+  .kwl-footer-linkedin { padding: 7px 16px; font-size: 0.72rem; }
+  .kwl-print-btn { width: 42px; height: 42px; font-size: 1.1rem; bottom: 16px; right: 16px; }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+  .kwl-main-name { font-size: 1.6rem; }
+  .kwl-main { padding: 22px 16px; }
+  .kwl-sidebar { padding: 28px 16px; }
+}
+</style>
+</head>
+<body>
+
+<button class="kwl-print-btn" onclick="window.print()" title="Print / Save as PDF">🖨</button>
+
+<div class="kwl-page">
+
+  <!-- SIDEBAR -->
+  <aside class="kwl-sidebar">
+
+    <div class="kwl-sidebar-header">
+      <div class="kwl-avatar">
+        <img src="profile-picture.png" alt="Ken Weill Lumacad" onerror="this.style.display='none';this.parentElement.innerHTML='KW';">
+      </div>
+      <div class="kwl-sidebar-name">Ken Weill Lumacad</div>
+      <div class="kwl-sidebar-title">Affiliate Marketing Manager · WordPress &amp; SEO Specialist</div>
+    </div>
+
+    <div class="kwl-s-divider"></div>
+
+    <div class="kwl-s-block">
+      <div class="kwl-s-label">Contact</div>
+      <ul class="kwl-contact-list">
+        <li>
+          <span class="kwl-ico">📍</span>
+          <span>Siquijor, Philippines<br><em>Remote</em></span>
+        </li>
+        <li>
+          <span class="kwl-ico">✉</span>
+          <a href="mailto:kenweill.freelancer@gmail.com">kenweill.freelancer@gmail.com</a>
+        </li>
+        <li>
+          <span class="kwl-ico">in</span>
+          <a href="https://linkedin.com/in/kenweill" target="_blank" rel="noopener">linkedin.com/in/kenweill</a>
+        </li>
+        <li>
+          <span class="kwl-ico">{ }</span>
+          <a href="https://github.com/kenweill" target="_blank" rel="noopener">github.com/kenweill</a>
+        </li>
+      </ul>
+    </div>
+    <div class="kwl-s-divider"></div>
+
+    <div class="kwl-s-block">
+      <div class="kwl-s-label">Core Skills</div>
+      <div class="kwl-skills-cloud">
+        <span class="kwl-skill-tag">Affiliate Marketing</span>
+        <span class="kwl-skill-tag">Program Management</span>
+        <span class="kwl-skill-tag">Lead Generation</span>
+        <span class="kwl-skill-tag">SEO &amp; Content</span>
+        <span class="kwl-skill-tag">WordPress / PHP</span>
+        <span class="kwl-skill-tag">Apollo.io</span>
+        <span class="kwl-skill-tag">Campaign Optimization</span>
+        <span class="kwl-skill-tag">AWIN / CJ / Impact</span>
+        <span class="kwl-skill-tag">Partner Recruitment</span>
+        <span class="kwl-skill-tag">Email Outreach</span>
+        <span class="kwl-skill-tag">Data Analysis</span>
+        <span class="kwl-skill-tag">E-Commerce</span>
+        <span class="kwl-skill-tag">MikroTik / RouterOS</span>
+        <span class="kwl-skill-tag">GIS &amp; Geospatial</span>
+        <span class="kwl-skill-tag">Remote Work</span>
+      </div>
+    </div>
+    <div class="kwl-s-divider"></div>
+
+    <div class="kwl-s-block">
+      <div class="kwl-s-label">Education</div>
+      <div class="kwl-edu-block">
+        <strong>Asian College of Science &amp; Technology</strong>
+        <div class="kwl-edu-degree">BS Computer Science</div>
+        <div>1998 – 2002</div>
+      </div>
+      <div class="kwl-edu-block">
+        <strong>Asian College of Science &amp; Technology</strong>
+        <div class="kwl-edu-degree">Diploma in Electronics &amp; Computer Technology</div>
+        <div>1996 – 1998</div>
+      </div>
+    </div>
+    <div class="kwl-s-divider"></div>
+
+    <div class="kwl-s-block">
+      <div class="kwl-s-label">Certifications</div>
+      <ul class="kwl-cert-list">
+        <li><strong>Google Analytics Certification</strong>Skillshop <em>· Sep 22, 2026 - Sep 22, 2027</em></li>
+        <li><strong>Google Ads Search Certification</strong>Skillshop <em>· Apr 2025 – Apr 2026</em></li>
+        <li><strong>AI-Powered Shopping Ads</strong>Skillshop <em>· Mar 2025 – Mar 2026</em></li>
+        <li><strong>Remote Work Learner</strong>CertiProf <em>· Jan 2025</em></li>
+        <li><strong>Facebook Advertising Mastery</strong>NextLevel Digital <em>· Dec 2024</em></li>
+        <li><strong>General Virtual Assistance</strong>DICT Philippines <em>· Nov 2024</em></li>
+        <li><strong>Amazon Product Sourcing Masterclass</strong>FilAm VA <em>· Feb 2023</em></li>
+        <li><strong>Career Service Professional Eligibility</strong>Civil Service Commission <em>· Oct 2003</em></li>
+      </ul>
+    </div>
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="kwl-main">
+
+    <header class="kwl-main-header">
+      <div class="kwl-main-name">KEN WEILL LUMACAD</div>
+      <div class="kwl-main-title">Affiliate Marketing Manager · WordPress &amp; SEO Specialist</div>
+    </header>
+
+    <section class="kwl-section">
+      <div class="kwl-section-label">Professional Summary</div>
+      <p class="kwl-summary-text">Affiliate Marketing Manager with 10+ years of experience building and scaling profitable affiliate programs for e-commerce and digital brands. Uniquely positioned at the intersection of affiliate marketing strategy and hands-on WordPress/PHP development — able to both build and market digital products independently. Proven track record across major networks including AWIN, CJ, and Impact, with deep expertise in affiliate recruitment, campaign optimization, and lead generation using tools like Apollo.io.</p>
+    </section>
+
+    <section class="kwl-section">
+      <div class="kwl-section-label">Professional Experience</div>
+
+      <div class="kwl-exp-item">
+        <div class="kwl-exp-header">
+          <div class="kwl-exp-role">Affiliate Program Growth Specialist</div>
+          <div class="kwl-exp-date">Aug 2026 – Present</div>
+        </div>
+        <div class="kwl-exp-company">Ube Superfood</div>
+        <ul class="kwl-exp-bullets">
+          <li>Managing and growing the affiliate program for a health/wellness e-commerce brand on Impact, including partner recruitment, application review, and ongoing relationship management</li>
+          <li>Conducted a full program audit covering partner activity, commission structure, application backlog, and historical performance to identify growth opportunities</li>
+          <li>Reactivating dormant partner relationships and processing a backlog of pending applications to restore consistent program activity</li>
+          <li>Coordinating directly with high-performing partners to expand promotional reach and strengthen ongoing collaboration</li>
+        </ul>
+      </div>
+
+      <div class="kwl-exp-item">
+        <div class="kwl-exp-header">
+          <div class="kwl-exp-role">Affiliate Marketing Consultant</div>
+          <div class="kwl-exp-date">Jul 2026 – Present</div>
+        </div>
+        <div class="kwl-exp-company">CardCompass</div>
+        <ul class="kwl-exp-bullets">
+          <li>Managing affiliate network applications and merchant partnership development for an AI-powered credit card discovery and comparison platform</li>
+          <li>Identifying relevant credit card affiliate programs across major networks including CJ, Impact, and Rakuten</li>
+          <li>Setting clear network application strategies aligned with site growth and traffic development</li>
+          <li>Providing guidance on affiliate program requirements and approval processes for financial niche publishers</li>
+        </ul>
+      </div>
+
+      <div class="kwl-exp-item">
+        <div class="kwl-exp-header">
+          <div class="kwl-exp-role">Affiliate Network &amp; Brand Application Specialist</div>
+          <div class="kwl-exp-date">May 2026 – Present</div>
+        </div>
+        <div class="kwl-exp-company">OmniReady LLC</div>
+        <ul class="kwl-exp-bullets">
+          <li>Manage affiliate network applications and brand program submissions for a baby and parenting shopping guidance platform</li>
+          <li>Apply to and manage accounts across multiple affiliate networks including Rakuten, Commission Junction, Impact, Awin, Partnerize, Affiliates.One, Skimlinks, FlexOffers, AvantLink, Webgains, Involve Asia, LinkConnector, DogNet, and Levanta</li>
+          <li>Apply to relevant baby brands and retailers within approved networks including Target, Walmart, Carter's, Ergobaby, PatPat, Janie and Jack, Bugaboo, and Little Canadian</li>
+          <li>Maintain a structured tracking system in Google Sheets for application status across all networks and merchants including approval, pending, and declined statuses</li>
+          <li>Handle merchant research, follow-ups, reapplications, and appeal emails to maximize approval rates</li>
+          <li>Coordinate site verification requirements and technical setup instructions with the client</li>
+          <li>Draft and manage all affiliate network and merchant communications on behalf of the client</li>
+        </ul>
+      </div>
+
+      <div class="kwl-exp-item">
+        <div class="kwl-exp-header">
+          <div class="kwl-exp-role">Affiliate Network Application Assistant</div>
+          <div class="kwl-exp-date">Nov 2025 – Present</div>
+        </div>
+        <div class="kwl-exp-company">Goodshop</div>
+        <ul class="kwl-exp-bullets">
+          <li>Submit and track affiliate program applications across 9+ networks: CJ, AWIN, Flex Offers, GoAffPro, Skimlinks, AvantLink, Rakuten, Webgains, and Impact.</li>
+          <li>Research and identify which networks specific merchants belong to, closing information gaps with both provided and self-sourced data.</li>
+          <li>Set up and manage new affiliate network accounts with accurate credentials and complete configuration.</li>
+          <li>Maintain a structured tracking system for application progress and deliver regular client progress reports.</li>
+        </ul>
+      </div>
+
+      <div class="kwl-exp-item">
+        <div class="kwl-exp-header">
+          <div class="kwl-exp-role">B2B SaaS Affiliate Marketer</div>
+          <div class="kwl-exp-date">May 2026 – Jul 2026</div>
+        </div>
+        <div class="kwl-exp-company">Ascendex</div>
+        <ul class="kwl-exp-bullets">
+          <li>Promoting an AI-powered B2B SaaS platform to small and medium business owners across key markets including the US, Canada, and the UK</li>
+          <li>Conducting targeted cold email outreach campaigns using Apollo.io to prospect and engage potential subscribers</li>
+          <li>Managing referral tracking through a dedicated affiliate link, monitoring conversions and recurring commission performance</li>
+          <li>Earning performance-based commissions on referred subscriptions across multiple pricing tiers</li>
+        </ul>
+      </div>
+
+      <div class="kwl-exp-item">
+        <div class="kwl-exp-header">
+          <div class="kwl-exp-role">Social Media Manager (Volunteer)</div>
+          <div class="kwl-exp-date">Dec 2024 – Jul 2026</div>
+        </div>
+        <div class="kwl-exp-company">Ags Ags Siquijor Tour and Accommodation</div>
+        <ul class="kwl-exp-bullets">
+          <li>Independently manage all aspects of the Facebook page including content calendars, post design, captions, and scheduling.</li>
+          <li>Handle page branding, optimization, and basic analytics reporting to grow audience visibility and engagement.</li>
+          <li>Maintain a consistent online presence promoting Siquijor tourism and local services.</li>
+        </ul>
+      </div>
+
+      <div class="kwl-exp-item">
+        <div class="kwl-exp-header">
+          <div class="kwl-exp-role">Affiliate Manager – TikTok Outreach</div>
+          <div class="kwl-exp-date">Oct 2025 – Apr 2026</div>
+        </div>
+        <div class="kwl-exp-company">AprilFTD</div>
+        <ul class="kwl-exp-bullets">
+          <li>Led TikTok influencer outreach and affiliate recruitment for a client targeting the German market.</li>
+          <li>Identified and vetted creators averaging 20,000+ views per video, ensuring alignment with client niche and audience demographics.</li>
+          <li>Conducted outreach via TikTok DMs and email, presenting affiliate partnership opportunities with defined commission structures.</li>
+          <li>Built and maintained a detailed outreach tracker covering contact status, responses, follow-ups, and conversion outcomes.</li>
+        </ul>
+      </div>
+
+      <div class="kwl-exp-item">
+        <div class="kwl-exp-header">
+          <div class="kwl-exp-role">Affiliate Marketing Manager</div>
+          <div class="kwl-exp-date">Aug 2025 – Sep 2025</div>
+        </div>
+        <div class="kwl-exp-company">Digital Logic (Oxford Language Club)</div>
+        <ul class="kwl-exp-bullets">
+          <li>Designed and executed an affiliate recruitment strategy that grew the active partner network across ShareASale and in-house platforms.</li>
+          <li>Leveraged Apollo.io for data-driven prospecting and CRM enrichment, improving outreach targeting and response rates.</li>
+          <li>Streamlined onboarding and partner communication workflows to support scalable, repeatable campaign growth.</li>
+        </ul>
+      </div>
+
+      <div class="kwl-exp-item">
+        <div class="kwl-exp-header">
+          <div class="kwl-exp-role">3D LiDAR Annotator &amp; Reviewer</div>
+          <div class="kwl-exp-date">Aug 2019 – Dec 2024</div>
+        </div>
+        <div class="kwl-exp-company">Remotasks</div>
+        <ul class="kwl-exp-bullets">
+          <li>Annotated complex 3D point cloud datasets for autonomous vehicle and smart device AI model training.</li>
+          <li>Progressed to a reviewer role, auditing and correcting annotators' outputs to uphold project-wide quality benchmarks.</li>
+          <li>Consistently met productivity targets across five years of sustained long-term delivery.</li>
+        </ul>
+      </div>
+
+      <div class="kwl-exp-item">
+        <div class="kwl-exp-header">
+          <div class="kwl-exp-role">Website Admin &amp; Affiliate Strategist</div>
+          <div class="kwl-exp-date">Mar 2012 – Jan 2023</div>
+        </div>
+        <div class="kwl-exp-company">CouponHubs / KLM Merchant Hubs</div>
+        <ul class="kwl-exp-bullets">
+          <li>Built and managed a WordPress-powered coupon and deals website for over a decade, growing it into a functional affiliate marketing operation.</li>
+          <li>Sourced, tested, and validated coupon codes from affiliate partners; wrote and published store reviews driving organic traffic.</li>
+          <li>Collaborated with affiliate network partners to coordinate campaigns and maximize commission revenue.</li>
+        </ul>
+      </div>
+
+      <div class="kwl-exp-item">
+        <div class="kwl-exp-header">
+          <div class="kwl-exp-role">Owner &amp; IT Technician</div>
+          <div class="kwl-exp-date">Sep 2007 – Dec 2017</div>
+        </div>
+        <div class="kwl-exp-company">CyberLazi Internet Cafe</div>
+        <ul class="kwl-exp-bullets">
+          <li>Owned and operated a community internet cafe, managing all technical operations and customer-facing services for a decade.</li>
+          <li>Maintained hardware and software across multiple workstations, handling repairs, upgrades, and system configuration independently.</li>
+        </ul>
+      </div>
+
+      <div class="kwl-exp-item">
+        <div class="kwl-exp-header">
+          <div class="kwl-exp-role">Virtual Assistant – Affiliate Operations</div>
+          <div class="kwl-exp-date">Jun 2011 – Mar 2012</div>
+        </div>
+        <div class="kwl-exp-company">CouponDunia.in</div>
+        <ul class="kwl-exp-bullets">
+          <li>Collected and validated coupon codes and vouchers from partner merchant websites.</li>
+          <li>Monitored campaign performance data to identify top-performing offers and inform content prioritization.</li>
+        </ul>
+      </div>
+
+      <div class="kwl-exp-item">
+        <div class="kwl-exp-header">
+          <div class="kwl-exp-role">GIS Technician</div>
+          <div class="kwl-exp-date">Jun 2004 – Dec 2004</div>
+        </div>
+        <div class="kwl-exp-company">Siquijor Integrated Resource Management Project (GTZ-SIRMAP)</div>
+        <ul class="kwl-exp-bullets">
+          <li>Digitized land records for a government-backed land digitization initiative converting physical municipal and provincial maps to digital GIS datasets.</li>
+          <li>Operated military-grade GPS equipment for high-precision field data collection.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="kwl-section">
+      <div class="kwl-section-label">Open Source Projects</div>
+      <div class="kwl-proj-list">
+
+        <div class="kwl-proj-item">
+          <div class="kwl-proj-header">
+            <strong>MikhMon CE</strong>
+            <span class="kwl-proj-type">Open Source</span>
+          </div>
+          <p>Community fork of MikhMon, a MikroTik hotspot manager upgraded for full PHP 8.x and RouterOS 6 &amp; 7 compatibility, with automatic date/duration format detection and no manual configuration required.</p>
+          <div class="kwl-proj-link"><a href="https://github.com/kenweill/mikhmon-ce" target="_blank" rel="noopener">github.com/kenweill/mikhmon-ce →</a></div>
+        </div>
+
+        <div class="kwl-proj-item">
+          <div class="kwl-proj-header">
+            <strong>KWL Maintenance Mode</strong>
+            <span class="kwl-proj-type">Open Source</span>
+          </div>
+          <p>Free, fully customizable WordPress maintenance/under-construction page plugin with one-click toggle, full color control, animated progress bar, role-based bypass, and proper 503 HTTP status support.</p>
+          <div class="kwl-proj-link"><a href="https://github.com/kenweill/kwl-maintenance-mode" target="_blank" rel="noopener">github.com/kenweill/kwl-maintenance-mode →</a></div>
+        </div>
+
+        <div class="kwl-proj-item">
+          <div class="kwl-proj-header">
+            <strong>KWL Coupon WP</strong>
+            <span class="kwl-proj-type">Open Source</span>
+          </div>
+          <p>Free, open-source WordPress theme built specifically for coupon and deals websites, drawing on 10+ years of hands-on affiliate coupon site experience — no paid plugins required.</p>
+          <div class="kwl-proj-link"><a href="https://github.com/kenweill/kwl-coupon-wp" target="_blank" rel="noopener">github.com/kenweill/kwl-coupon-wp →</a></div>
+        </div>
+
+        <div class="kwl-proj-item">
+          <div class="kwl-proj-header">
+            <strong>KWL Resume</strong>
+            <span class="kwl-proj-type">Open Source</span>
+          </div>
+          <p>A fully customizable single-page resume/CV WordPress theme with 8 color schemes, live Customizer preview, a tabbed admin settings page, sortable repeater fields, and flexible optional sections.</p>
+          <div class="kwl-proj-link"><a href="https://github.com/kenweill/kwl-resume" target="_blank" rel="noopener">github.com/kenweill/kwl-resume →</a></div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="kwl-resume-footer">
+      <div class="kwl-footer-name">KEN WEILL LUMACAD</div>
+      <div class="kwl-footer-title">Affiliate Marketing Manager · WordPress &amp; SEO Specialist</div>
+      <a href="https://linkedin.com/in/kenweill" target="_blank" rel="noopener" class="kwl-footer-linkedin">🔗 Connect on LinkedIn</a>
+      <div class="kwl-footer-open">🌍 Open to new opportunities and collaborations</div>
+      <div class="kwl-footer-date">Last updated: October 8, 2026</div>
+    </footer>
+
+  </main>
+</div>
+
+</body>
+</html>
